@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="main.java.RFIDController"
+      spacing="15"
+      alignment="CENTER"
+      prefWidth="650"
+      prefHeight="600"
+      minWidth="500"
+      minHeight="450"
+      maxWidth="900"
+      maxHeight="800"
+      style="-fx-padding: 20;
+             -fx-background-image: url('/images/login1.jpg');
+             -fx-background-size: cover;
+             -fx-background-position: center center;
+             -fx-background-color: #000;">
+
+    <Label text="RFID Tag Reader/Writer with Auto-Detection" 
+           style="-fx-font-size: 22px; -fx-text-fill: #fff; -fx-font-weight: bold;"/>
+
+    <!-- Tag ID Input Section -->
+    <VBox spacing="8" alignment="CENTER">
+        <Label text="Tag ID:" style="-fx-font-size: 14px; -fx-text-fill: #fff;"/>
+        <TextField fx:id="tagField"
+                   promptText="Enter or scan Tag ID"
+                   prefWidth="350"
+                   style="-fx-font-size: 14px; -fx-background-radius: 5; -fx-padding: 8px;"/>
+    </VBox>
+
+    <!-- Main Control Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Scan Tag"
+                onAction="#handleScan"
+                prefWidth="110"
+                prefHeight="35"
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+        
+        <Button text="Write Tag"
+                onAction="#handleWrite"
+                prefWidth="110"
+                prefHeight="35"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+        
+        <Button fx:id="autoDetectButton"
+                text="Start Auto-Detect"
+                onAction="#handleAutoDetect"
+                prefWidth="130"
+                prefHeight="35"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+    </HBox>
+
+    <!-- Auto-Write Option -->
+    <HBox spacing="10" alignment="CENTER">
+        <CheckBox fx:id="autoWriteCheckBox"
+                  text="Auto-write when tag detected"
+                  style="-fx-text-fill: #fff; -fx-font-size: 12px;"/>
+        <Separator prefWidth="20" visible="false"/>
+        <Button text="Test Connection"
+                onAction="#handleTestConnection"
+                prefWidth="120"
+                prefHeight="30"
+                style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+    </HBox>
+
+    <!-- Status Display -->
+    <Label fx:id="statusLabel"
+           text=""
+           wrapText="true"
+           prefWidth="400"
+           minHeight="40"
+           style="-fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;"/>
+
+    <!-- Control Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Refresh"
+                onAction="#handleRefresh"
+                prefWidth="100"
+                prefHeight="35"
+                style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+    </HBox>
+
+    <!-- Log Area -->
+    <VBox spacing="5" alignment="CENTER">
+        <Label text="Activity Log:" style="-fx-font-size: 14px; -fx-text-fill: #fff; -fx-font-weight: bold;"/>
+        <TextArea fx:id="logArea"
+                  editable="false"
+                  wrapText="true"
+                  prefHeight="180"
+                  prefWidth="550"
+                  style="-fx-font-family: 'Consolas', 'Monaco', monospace; 
+                         -fx-background-radius: 5; 
+                         -fx-border-color: #ccc; 
+                         -fx-border-radius: 5;
+                         -fx-font-size: 11px;"/>
+    </VBox>
+
+    <!-- Instructions -->
+    <Label text="💡 Tip: Enable auto-detection to automatically detect tags in range. Use auto-write to automatically program detected tags."
+           wrapText="true"
+           prefWidth="500"
+           style="-fx-font-size: 11px; -fx-text-fill: #bdc3c7; -fx-text-alignment: center;"/>
+
+</VBox>
